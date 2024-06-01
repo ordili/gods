@@ -24,7 +24,6 @@ func (list *List[T]) Add(values ...T) {
 }
 
 func (list *List[T]) Get(index int) (T, bool) {
-
 	if !list.withinRange(index) {
 		var ret T
 		return ret, false
