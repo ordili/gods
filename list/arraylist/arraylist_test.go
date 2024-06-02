@@ -43,3 +43,18 @@ func TestIndexOf(t *testing.T) {
 		t.Errorf("Got %v expected %v", index, -1)
 	}
 }
+
+func TestString(t *testing.T) {
+	list1 := New[int](1)
+	if actualValue := list1.String(); actualValue != "ArrayList[1]" {
+		t.Errorf("Got %v expected %v", actualValue, "ArrayList[1]")
+	}
+	list2 := New[int]()
+	if actualValue := list2.String(); actualValue != "ArrayList[]" {
+		t.Errorf("Got %v expected %v", actualValue, "ArrayList[]")
+	}
+	list3 := New[int](1, 2, 3)
+	if actualValue := list3.String(); actualValue != "ArrayList[1,2,3]" {
+		t.Errorf("Got %v expected %v", actualValue, "ArrayList[1,2,3]")
+	}
+}

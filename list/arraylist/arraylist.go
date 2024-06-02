@@ -1,5 +1,10 @@
 package arraylist
 
+import (
+	"fmt"
+	"strings"
+)
+
 const growthFactor = float32(1.5)
 
 type List[T comparable] struct {
@@ -87,4 +92,13 @@ func (list *List[T]) InexOf(target T) int {
 		}
 	}
 	return -1
+}
+
+func (list *List[T]) String() string {
+	values := make([]string, 0, list.Size())
+	for i := 0; i < list.Size(); i++ {
+		values = append(values, fmt.Sprintf("%v", list.elements[i]))
+	}
+	ret := fmt.Sprintf("ArrayList[%s]", strings.Join(values, ","))
+	return ret
 }
