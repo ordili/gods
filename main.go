@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
-import "github.com/ordili/gods/list/arraylist"
+import (
+	"fmt"
+
+	"github.com/ordili/gods/list/arraylist"
+)
 
 func main() {
 	list := arraylist.New[int](1, 2, 3)
@@ -14,6 +17,5 @@ func main() {
 		}
 		fmt.Println(val)
 	}
-
 	fmt.Println("Done")
 }
