@@ -26,3 +26,20 @@ func TestAdd(t *testing.T) {
 		t.Errorf("Got %v expected %v", actualValue, 10)
 	}
 }
+
+func TestIndexOf(t *testing.T) {
+	list1 := New[int](0, 1, 2)
+	if index := list1.InexOf(0); index != 0 {
+		t.Errorf("Got %v expected %v", index, 0)
+	}
+	if index := list1.InexOf(1); index != 1 {
+		t.Errorf("Got %v expected %v", index, 1)
+	}
+	if index := list1.InexOf(2); index != 2 {
+		t.Errorf("Got %v expected %v", index, 2)
+	}
+
+	if index := list1.InexOf(100); index != -1 {
+		t.Errorf("Got %v expected %v", index, -1)
+	}
+}

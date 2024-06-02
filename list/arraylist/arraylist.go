@@ -79,3 +79,12 @@ func (list *List[T]) Contains(target T) bool {
 	}
 	return false
 }
+
+func (list *List[T]) InexOf(target T) int {
+	for index, val := range list.elements {
+		if val == target {
+			return index
+		}
+	}
+	return -1
+}
