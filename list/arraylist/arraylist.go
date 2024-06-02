@@ -66,3 +66,16 @@ func (list *List[T]) reSize(cap int) {
 func (list *List[T]) IsEmpty() bool {
 	return list.size == 0
 }
+
+func (list *List[T]) Size() int {
+	return list.size
+}
+
+func (list *List[T]) Contains(target T) bool {
+	for _, val := range list.elements {
+		if target == val {
+			return true
+		}
+	}
+	return false
+}
