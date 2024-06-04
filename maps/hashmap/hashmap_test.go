@@ -2,6 +2,7 @@ package hashmap
 
 import (
 	"reflect"
+	"sort"
 	"testing"
 )
 
@@ -70,23 +71,43 @@ func TestEmpty(t *testing.T) {
 
 func TestKeys(t *testing.T) {
 	m := New[string, int]()
-	keys := []string{"a", "b", "c"}
+	keys := []string{"a", "b", "c", "d", "e", "f"}
 	for _, key := range keys {
 		m.Put(key, 1)
 	}
-	if actualKeys := m.Keys(); !reflect.DeepEqual(actualKeys, keys) {
+	actualKeys := m.Keys()
+	sort.Strings(actualKeys)
+	if !reflect.DeepEqual(actualKeys, keys) {
 		t.Errorf("Got %v expected is %v", actualKeys, keys)
 	}
 }
 
 func TestValues(t *testing.T) {
 	m := New[string, int]()
-	keys := []string{"a", "b", "c"}
-	vals := []int{1, 2, 3}
+	keys := []string{"a", "b", "c", "e", "f", "g", "h"}
+	vals := []int{1, 2, 3, 4, 5, 6, 7}
 	for index, key := range keys {
 		m.Put(key, vals[index])
 	}
-	if actualVals := m.Values(); !reflect.DeepEqual(actualVals, vals) {
+	actualVals := m.Values()
+	sort.Slice(actualVals, func(i, j int) bool {
+		return actualVals[i] < actualVals[j]
+	})
+
+	if !reflect.DeepEqual(actualVals, vals) {
 		t.Errorf("Got %v expected is %v", actualVals, vals)
+	}
+}
+
+func TestRemove(t *testing.T) {
+	m := New[string, int]()
+	key := "JD"
+	m.Put(key, 12)
+	if val, found := m.Get(key); found != true && val != 12 {
+		t.Errorf("Got %v expected is %v", found, false)
+	}
+	m.Remove(key)
+	if _, found := m.Get(key); found != false {
+		t.Errorf("Got %v expected is %v", found, false)
 	}
 }

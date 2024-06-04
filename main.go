@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ordili/gods/list/arraylist/maps/hashmap"
+	"github.com/ordili/gods/maps/hashmap"
 )
 
 func main() {
