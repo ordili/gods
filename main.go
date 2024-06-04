@@ -3,11 +3,13 @@ package main
 import (
 	"fmt"
 
-	"github.com/ordili/gods/list/arraylist"
+	"github.com/ordili/gods/list/arraylist/maps/hashmap"
 )
 
 func main() {
-	list := arraylist.New[int](1)
-	fmt.Println(list)
+	m := hashmap.New[string, int]()
+	m.Put("JD", 100)
+	m.Put("QQ", 200)
+	fmt.Println(m)
 	fmt.Println("Done")
 }
