@@ -3,13 +3,17 @@ package main
 import (
 	"fmt"
 
-	"github.com/ordili/gods/maps/hashmap"
+	"github.com/ordili/gods/lists/singlelinkedlist"
 )
 
 func main() {
-	m := hashmap.New[string, int]()
-	m.Put("JD", 100)
-	m.Put("QQ", 200)
-	fmt.Println(m)
+	list := singlelinkedlist.New[int](1, 2, 3)
+	fmt.Println(list)
+	list.Remove(0)
+	fmt.Println(list)
+	list.Remove(1)
+	fmt.Println(list)
+	list.Remove(0)
+	fmt.Println(list)
 	fmt.Println("Done")
 }
